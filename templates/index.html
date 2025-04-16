@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Predictor</title>
+</head>
+<body>
+    <h2>Predict House Price</h2>
+    <form action="/predict" method="POST">
+        <label for="area">Select Area:</label>
+        <select name="area" required>
+            <option value="">--Select Area--</option>
+            <option value="Chrompet">Chrompet</option>
+            <option value="Karapakkam">Karapakkam</option>
+            <option value="KK Nagar">KK Nagar</option>
+            <option value="Velachery">Velachery</option>
+            <option value="Anna Nagar">Anna Nagar</option>
+            <option value="Adyar">Adyar</option>
+            <option value="T NAGAR">T NAGAR</option>
+            <option value="chormpt">chormpt</option>
+        </select>
+        <br><br>
+
+        <label for="sqft">Square Feet:</label>
+        <input type="number" name="sqft" required>
+        <br><br>
+
+        <label for="bedroom">Number of Bedrooms:</label>
+        <select name="bedroom" required>
+            {% for i in range(1, 6) %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="bathroom">Number of Bathrooms:</label>
+        <select name="bathroom" required>
+            {% for i in range(1, 6) %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="room">Total Rooms:</label>
+        <select name="room" required>
+            {% for i in range(1, 10) %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if predicted_text %}
+        <h3>{{ predicted_text }}</h3>
+    {% endif %}
+</body>
+</html>
